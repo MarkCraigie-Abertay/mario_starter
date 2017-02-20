@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	public float speed = 6.0F;
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
+    private float previousPos = 0;
 	private Vector3 moveDirection = Vector3.zero;
 
 	public int Lives = 3; // number of lives the player hs
@@ -44,8 +45,18 @@ public class Player : MonoBehaviour {
 
 			// check to see if the player should jump
 			if (Input.GetButton("Jump"))
-				moveDirection.y = jumpSpeed;
-		}
+                moveDirection.y = jumpSpeed;
+
+        }
+
+        //check if the player is in the air
+        if (controller.isGrounded == false)
+        {
+            if (previousPos == gameObject.transform.position.y)
+                moveDirection.y = 0;
+
+            previousPos = gameObject.transform.position.y;
+        }
 
 		// apply gravity to movement direction
 		moveDirection.y -= gravity * Time.deltaTime;
