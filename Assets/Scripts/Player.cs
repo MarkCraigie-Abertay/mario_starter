@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	// variables taken from CharacterController.Move example script
 	// https://docs.unity3d.com/ScriptReference/CharacterController.Move.html
 	public float speed = 6.0F;
-	public float jumpSpeed = 8.0F;
+	public float jumpSpeed = 14.0F;
 	public float gravity = 20.0F;
     private float previousPos = 0;
 	private Vector3 moveDirection = Vector3.zero;
