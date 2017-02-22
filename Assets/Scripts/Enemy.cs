@@ -80,9 +80,12 @@ public class Enemy : MonoBehaviour {
 			Player playerComponent = playerGameObject.GetComponent<Player> ();
 
             //checks to see if player is landing on goomba
-            //if player lands on head, destroy goomba
+            //if player lands on head, destroy goomba and increase score
             if (hit.collider.gameObject.transform.position.y > gameObject.transform.position.y + gameObject.GetComponent<CapsuleCollider>().height)
+            {
                 Destroy(gameObject);
+                playerComponent.Score = playerComponent.Score + 100;
+            }
 
             //else, remove life
             else
